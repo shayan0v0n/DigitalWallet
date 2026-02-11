@@ -7,9 +7,6 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Setter
-@Builder
-@AllArgsConstructor
 public class GetWalletResponse {
     public UUID  walletId;
     public String  walletName;

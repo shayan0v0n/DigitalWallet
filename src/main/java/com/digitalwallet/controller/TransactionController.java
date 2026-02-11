@@ -1,6 +1,7 @@
 package com.digitalwallet.controller;
 
 import com.digitalwallet.DTO.Transaction.*;
+import com.digitalwallet.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Transaction Management", description = "Transaction Management API")
-@RequestMapping("api/transaction")
+@RequestMapping("api/transactions")
 public class TransactionController {
-
+    private final TransactionService transactionService;
 
     @GetMapping("/{walletId}")
     @Operation(summary = "get all transactions by wallet id")
@@ -32,6 +33,13 @@ public class TransactionController {
     @Operation(summary = "add decremental transaction to wallet")
     public ResponseEntity<DecreaseTransactionResponse>  decreaseTransaction(@PathVariable("walletId") String walletId, @RequestBody DecreaseTransactionRequest request) {
         DecreaseTransactionResponse response = new DecreaseTransactionResponse();
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/funds")
+    @Operation(summary = "fund transaction between 2 wallets")
+    public ResponseEntity<TransactionFundsResponse> transactionFunds(@RequestBody TransactionFundsRequest request)  {
+        TransactionFundsResponse response = new TransactionFundsResponse();
         return ResponseEntity.ok(response);
     }
 }
