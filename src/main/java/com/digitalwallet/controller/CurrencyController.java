@@ -20,21 +20,21 @@ public class CurrencyController {
     @PatchMapping("/{currencyId}")
     @Operation(summary = "update ratio by currency id")
     public ResponseEntity<UpdateRatioCurrencyResponse> updateRatioCurrency(@PathVariable UUID currencyId, @RequestBody UpdateRatioCurrencyRequest request) {
-        UpdateRatioCurrencyResponse response = new UpdateRatioCurrencyResponse();
+        UpdateRatioCurrencyResponse response = currencyService.updateRatioCurrency(currencyId, request);
         return  ResponseEntity.ok(response);
     }
 
     @PostMapping()
     @Operation(summary = "add currency")
     public ResponseEntity<CreateCurrencyResponse>  createCurrency(@RequestBody CreateCurrencyRequest request) {
-        CreateCurrencyResponse response = new CreateCurrencyResponse();
+        CreateCurrencyResponse response = currencyService.createCurrency(request);
         return  ResponseEntity.ok(response);
     }
 
     @GetMapping()
     @Operation(summary = "get all currencies")
     public ResponseEntity<GetCurrenciesResponse> getCurrencies() {
-        GetCurrenciesResponse response = new GetCurrenciesResponse();
+        GetCurrenciesResponse response = currencyService.getAllCurrencies();
         return  ResponseEntity.ok(response);
     }
 }

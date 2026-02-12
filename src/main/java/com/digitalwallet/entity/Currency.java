@@ -1,28 +1,26 @@
 package com.digitalwallet.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
+@Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Builder
+@Setter
 @Table(name = "Currencies")
 public class Currency extends BaseEntity {
-    @Column
-    public String code;
+    @Column(nullable = false)
+    private String code;
 
-    @Column
-    public String name;
+    @Column(nullable = false)
+    private String name;
 
-    @Column
-    public double ratio;
+    @Column(nullable = false)
+    private double ratio;
 
     @OneToMany(mappedBy = "currency", cascade = CascadeType.ALL)
     private List<Wallet> wallets;
