@@ -12,11 +12,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 public class CreateWalletRequest {
-    @NotBlank
-    private String walletName;
-
-    @NotBlank
-    private String walletAddress;
-
-    private boolean publicWallet;
+    private String title;
+    private UUID userId;
+    private UUID currencyId;
 }

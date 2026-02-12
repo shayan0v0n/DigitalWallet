@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
 public class Wallet extends BaseEntity {
     @Column(nullable = false)
     private UUID userId;
