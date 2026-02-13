@@ -18,28 +18,28 @@ public class TransactionController {
     @GetMapping("/{walletId}")
     @Operation(summary = "get all transactions by wallet id")
     public ResponseEntity<GetTransactionsByWalletIdResponse> getTransactionsByWalletId(@PathVariable("walletId") String walletId) {
-        GetTransactionsByWalletIdResponse response = new GetTransactionsByWalletIdResponse();
+        GetTransactionsByWalletIdResponse response = transactionService.getTransactionsByWalletId(walletId);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/{walletId}/increase")
     @Operation(summary = "add incremental transaction to wallet")
     public ResponseEntity<IncreaseTransactionResponse>  increaseTransaction(@PathVariable("walletId") String walletId, @RequestBody IncreaseTransactionRequest request) {
-        IncreaseTransactionResponse response = new IncreaseTransactionResponse();
+        IncreaseTransactionResponse response = transactionService.increaseTransaction(walletId, request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/{walletId}/decrease")
     @Operation(summary = "add decremental transaction to wallet")
     public ResponseEntity<DecreaseTransactionResponse>  decreaseTransaction(@PathVariable("walletId") String walletId, @RequestBody DecreaseTransactionRequest request) {
-        DecreaseTransactionResponse response = new DecreaseTransactionResponse();
+        DecreaseTransactionResponse response = transactionService.decreaseTransaction(walletId, request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/funds")
     @Operation(summary = "fund transaction between 2 wallets")
     public ResponseEntity<TransactionFundsResponse> transactionFunds(@RequestBody TransactionFundsRequest request)  {
-        TransactionFundsResponse response = new TransactionFundsResponse();
+        TransactionFundsResponse response = transactionService.transactionFunds(request);
         return ResponseEntity.ok(response);
     }
 }

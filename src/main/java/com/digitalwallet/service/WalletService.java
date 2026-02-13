@@ -159,4 +159,9 @@ public class WalletService {
                 .build();
     }
 
+    public void validateWalletActive(Wallet wallet) {
+        if (wallet.getStatus() != WalletStatus.Active) {
+            throw new IllegalStateException("Wallet " + wallet.getId() + " is not active");
+        }
+    }
 }

@@ -4,16 +4,14 @@ package com.digitalwallet.entity;
 import com.digitalwallet.constant.TransactionKind;
 import com.digitalwallet.constant.TransactionType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Setter
+@Entity
 @Getter
 @NoArgsConstructor
-@Entity
 @AllArgsConstructor
+@Builder
+@Setter
 @Table(name = "Transactions")
 public class Transaction extends BaseEntity {
     @Column(nullable = false)
